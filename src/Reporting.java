@@ -9,7 +9,7 @@ public class Reporting {
         return manufacturers;
     }
 
-    public void addManufacturer(Manufacturer manufacturer) {
+    public void addManufacturer(Manufacturer manufacturer){
         manufacturers.add(manufacturer);
     }
 
