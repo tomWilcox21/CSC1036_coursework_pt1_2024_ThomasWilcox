@@ -1,5 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
+/**
+ * This class handles the car model objects that are created and allows details about them to be accessed
+ * @author Thomas Wilcox
+ */
 
 public class CarModel {
 
@@ -9,6 +11,15 @@ public class CarModel {
     private int numSold;
     private String type;
 
+    /**
+     * This method creates an object for each car model added by the user, allows for data about the model to be stored
+     * @param modelName name of the model inputted by the user
+     * @param weight weight of the model inputted by the user
+     * @param salePrice sale price of the model inputted by the user
+     * @param numSold number of models sold inputted by the user
+     * @param type type of car inputted by the user
+     */
+
     public CarModel(String modelName, int weight, int salePrice, int numSold, String type) {
         this.modelName = modelName;
         this.weight = weight;
@@ -17,45 +28,37 @@ public class CarModel {
         this.type = type;
     }
 
-    public String getModelName() {
-        return modelName;
-    }
-
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
+    /**
+     * Gets the sale price of a car model
+     * @return returns the sale price
+     */
 
     public int getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(int salePrice) {
-        this.salePrice = salePrice;
-    }
+    /**
+     * Gets the number of units sold
+     * @return returns the number of units sold
+     */
 
     public int getNumSold() {
         return numSold;
     }
 
-    public void setNumSold(int numSold) {
-        this.numSold = numSold;
-    }
+    /**
+     * Gets the type of car
+     * @return returns the type
+     */
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+    /**
+     * Will return the car model object and all of its data as text and not a memory address
+     * @return returns a car model object
+     */
 
     @Override
     public String toString() {
@@ -68,11 +71,6 @@ public class CarModel {
     }
 }
 
-//    public void log(String car, List<String> entries) {
-//        entries.add(car);
-//        System.out.println();
-//        //return "Entry logged";
-//    }
 
 
 

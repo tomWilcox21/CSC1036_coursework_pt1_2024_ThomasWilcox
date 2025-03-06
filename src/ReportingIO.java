@@ -1,9 +1,20 @@
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This Class allows the user to interface with the other classes,
+ * they are able to add both manufacturers and car models as well as view data and reports about them
+ * @author Thomas Wilcox
+ */
+
 public class ReportingIO {
     private static Reporting reporting = new Reporting(); // Changed to static
 
+    /**
+     * This method will check if what has been inputted by the user is a numerical value or not
+     * @param str Text inputted by user
+     * @return Returns True if the string is numerical or false if not
+     */
 
     public static boolean isNumeric(String str) {
         try{
@@ -13,6 +24,10 @@ public class ReportingIO {
             return false;
         }
     }
+
+    /**
+     * This method allows the user to add a manufacturer to the manufacturer object
+     */
 
     public void inputManufacturerData(){
         List<Manufacturer> manufacturers = reporting.getManufacturers();
@@ -31,6 +46,12 @@ public class ReportingIO {
         welcomeScreen();
     }
 
+    /**
+     * This allows the user to add a car model, they are able to input a manufacturer that it links to and then
+     * add data such as the weight and price, this will then create a carModel object that will be added to the
+     * manufacturer object that the model links to
+     */
+
 
     public void inputCarData(){
         List<Manufacturer> manufacturers = reporting.getManufacturers();
@@ -42,8 +63,6 @@ public class ReportingIO {
             System.out.println("Manufacturer does not exist");
             inputManufacturerData();
         }
-
-
         System.out.println("Enter the model name: ");
         String modelName = sc.nextLine();
         System.out.println("Enter the weight: ");
@@ -63,6 +82,10 @@ public class ReportingIO {
         welcomeScreen();
     }
 
+    /**
+     * This method will list all the manufacturers that have been added to the manufacturers object list
+     */
+
     public void listManufacturers(){
         List<Manufacturer> manufacturers = reporting.getManufacturers();
         Scanner sc = new Scanner(System.in);
@@ -77,6 +100,11 @@ public class ReportingIO {
         sc.nextLine();
         welcomeScreen();
     }
+
+    /**
+     * This method allows the user to input a manufacturer that has been added to the manufacturers object list,
+     * this will then retrieve all the car models tied to the manufacturer and then display the data tied to the models
+     */
 
     public void listModelsFromManufacturer(){
         Scanner sc = new Scanner(System.in);
@@ -103,6 +131,13 @@ public class ReportingIO {
         sc.nextLine();
         welcomeScreen();
     }
+
+    /**
+     * This method allows the user to view different reports of statistics about car models and manufacturers,
+     * they are able to view the Manufcaturer with the largest revenue of cars sold of a given type,
+     * the most expensive car model and all of the car models above a certain price
+     *
+     */
 
     public void reportingStatistics(){
         Scanner sc = new Scanner(System.in);
@@ -135,6 +170,10 @@ public class ReportingIO {
         }
     }
 
+    /**
+     * This method allows the user to choose what they would like view or add out of the previous methods stated
+     */
+
     public static void welcomeScreen(){
         Scanner sc = new Scanner(System.in);
         ReportingIO r = new ReportingIO();
@@ -161,6 +200,11 @@ public class ReportingIO {
         }
 
     }
+
+    /**
+     * Main method which the program starts through
+     * @param args
+     */
 
     public static void main(String[] args) {
         ReportingIO r = new ReportingIO();
