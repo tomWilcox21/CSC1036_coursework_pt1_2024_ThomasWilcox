@@ -19,7 +19,7 @@ public class Manufacturer {
         this.manufacturerName = manufacturerName;
     }
 
-    public List<CarModel> getLst() {
+    public List<CarModel> getModels() {
         return lst;
     }
 
@@ -66,6 +66,11 @@ public class Manufacturer {
             }
         }
         return carModels;
+    }
+
+    @Override
+    public String toString() {
+        return "Manufacturer: " + manufacturerName;
     }
 
 

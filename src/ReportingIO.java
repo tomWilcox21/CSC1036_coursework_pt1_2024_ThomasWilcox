@@ -2,7 +2,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReportingIO {
-    public List<String> carEntries;
+    private static Reporting reporting = new Reporting(); // Changed to static
+
 
     public static boolean isNumeric(String str) {
         try{
@@ -13,9 +14,36 @@ public class ReportingIO {
         }
     }
 
+    public void inputManufacturerData(){
+        List<Manufacturer> manufacturers = reporting.getManufacturers();
+        System.out.println("Manufacturer Name: ");
+        String manufacturerName = new Scanner(System.in).nextLine();
+        manufacturerName = manufacturerName.toLowerCase();
+        Manufacturer manufacturer = new Manufacturer(manufacturerName);
+        for(Manufacturer m : manufacturers){
+            if(m.getManufacturerName().equals(manufacturerName)){
+                System.out.println("Manufacturer already exists");
+                inputManufacturerData();
+            }
+        }
+        reporting.addManufacturer(manufacturer);
+        System.out.println("Manufacturer added!");
+        welcomeScreen();
+    }
+
 
     public void inputCarData(){
+        List<Manufacturer> manufacturers = reporting.getManufacturers();
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter manufacturer name: ");
+        String manufacturerName = sc.nextLine();
+        Manufacturer manufacturer = reporting.getManufacturerByName(manufacturerName);
+        if(manufacturer == null){
+            System.out.println("Manufacturer does not exist");
+            inputManufacturerData();
+        }
+
+
         System.out.println("Enter the model name: ");
         String modelName = sc.nextLine();
         System.out.println("Enter the weight: ");
@@ -27,8 +55,84 @@ public class ReportingIO {
         sc.nextLine();
         System.out.println("Enter the type of car: ");
         String typ = sc.nextLine();
-        System.out.println("Enter the Manufacturer: ");
-        String Manufacturer = sc.nextLine();
+        CarModel c = new CarModel(modelName, weight, salePrice, numSold, typ);
+        manufacturer.addCarModel(c);
+        System.out.println("Car model added!");
+        System.out.println("Press any key to continue.");
+        sc.nextLine();
+        welcomeScreen();
+    }
+
+    public void listManufacturers(){
+        List<Manufacturer> manufacturers = reporting.getManufacturers();
+        Scanner sc = new Scanner(System.in);
+        if(manufacturers.isEmpty()){
+            System.out.println("No manufacturers found!");
+        }else{
+            for(Manufacturer manufacturer : manufacturers){
+                System.out.println(manufacturer);
+            }
+        }
+        System.out.println("Press any key to continue.");
+        sc.nextLine();
+        welcomeScreen();
+    }
+
+    public void listModelsFromManufacturer(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Manufacturer Name: ");
+        String manufacturerName = sc.nextLine();
+        manufacturerName = manufacturerName.toLowerCase();
+        Manufacturer manufacturer = reporting.getManufacturerByName(manufacturerName);
+        if(manufacturer == null){
+            System.out.println("Manufacturer does not exist");
+
+        }
+        List<CarModel> models = manufacturer.getModels();
+        if(models.isEmpty()){
+            System.out.println("No models found");
+            System.out.println("Press any key to continue.");
+            sc.nextLine();
+            welcomeScreen();
+        }else{
+            for(CarModel model : models){
+                System.out.println(model);
+            }
+        }
+        System.out.println("Press any key to continue.");
+        sc.nextLine();
+        welcomeScreen();
+    }
+
+    public void reportingStatistics(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("What would you like a report on?");
+        System.out.println("1.Manufacturer with largest revenue for cars sold of a given type\n2.Most expensive car model sold\n3.All car models made with a price greater than a specified amount");
+        int choice = sc.nextInt();
+        switch (choice){
+            case 1:
+                System.out.println("Enter type");
+                String type = sc.nextLine();
+                sc.nextLine();
+                System.out.println(reporting.largestTypeRevenue(type));
+                System.out.println("Press any key to continue.");
+                sc.nextLine();
+                welcomeScreen();
+                break;
+            case 2:
+                System.out.println(reporting.mostExpensiveSold());
+                System.out.println("Press any key to continue.");
+                sc.nextLine();
+                welcomeScreen();
+                break;
+            case 3:
+                System.out.println("Enter threshold price");
+                int thresholdPrice = sc.nextInt();
+                System.out.println(reporting.abovePrice(thresholdPrice));
+                System.out.println("Press any key to continue.");
+                sc.nextLine();
+                welcomeScreen();
+        }
     }
 
     public static void welcomeScreen(){
@@ -41,11 +145,18 @@ public class ReportingIO {
             System.out.println("Please enter a valid number");
             welcomeScreen();
         }else{
-            if(choice.equals("2")){
+            if(choice.equals("1")){
+                r.inputManufacturerData();
+            }else if(choice.equals("2")){
                 r.inputCarData();
-            }else if(choice.equals("5")){
-                Manufacturer manufacturer = new Manufacturer();
-
+            }else if(choice.equals("3")){
+                r.listManufacturers();
+            }
+            else if(choice.equals("4")){
+                r.listModelsFromManufacturer();
+            }
+            else if(choice.equals("5")){
+                r.reportingStatistics();
             }
         }
 
@@ -54,7 +165,5 @@ public class ReportingIO {
     public static void main(String[] args) {
         ReportingIO r = new ReportingIO();
         r.welcomeScreen();
-
-
     }
 }
