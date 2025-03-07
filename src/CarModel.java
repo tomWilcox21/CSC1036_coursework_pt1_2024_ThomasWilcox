@@ -69,6 +69,19 @@ public class CarModel {
                 "\nNumSold: " + numSold +
                 "\nBodyType: " + type + "\n";
     }
+
+    /**
+     * Main method added for testing
+     * @param args
+     */
+
+    public static void main(String[] args) {
+        CarModel carModel = new CarModel("Car Model", 10, 10, 10, "Car");
+        System.out.println(carModel.getType());
+        System.out.println(carModel.getSalePrice());
+        System.out.println(carModel.getNumSold());
+
+    }
 }
 
 

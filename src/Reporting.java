@@ -85,10 +85,13 @@ public class Reporting {
         if(manufacturers.isEmpty()){
             return null;
         }
-        Manufacturer manufacturer = manufacturers.get(0);
+        Manufacturer manufacturer = null;
+        int highestRevenue = 0;
         for(Manufacturer manufacturer1 : manufacturers){
-                if(manufacturer1.totalRevenue(type) > manufacturer.totalRevenue(type)){
-                    manufacturer = manufacturer1;
+            int currentRevenue = manufacturer1.totalRevenue(type);
+            if(currentRevenue > highestRevenue){
+                highestRevenue = currentRevenue;
+                manufacturer = manufacturer1;
             }
         }
         return manufacturer;
@@ -109,5 +112,27 @@ public class Reporting {
             carModels.addAll(manufacturer.carAbovePrice(price));
         }
         return carModels;
+    }
+
+    /**
+     * Main method added for testing
+     * @param args
+     */
+
+    public static void main(String[] args) {
+        Manufacturer manufacturer = new Manufacturer("Test1");
+        Manufacturer manufacturer2 = new Manufacturer("Test2");
+        manufacturer.addCarModel(new CarModel("Test1", 500, 25000, 50000, "saloon"));
+        manufacturer.addCarModel(new CarModel("Test2", 1000, 40000, 10000, "saloon"));
+        manufacturer2.addCarModel(new CarModel("Test3", 1250, 60000, 10000, "hatchback"));
+        manufacturer2.addCarModel(new CarModel("Test4", 1500, 10000, 10000, "saloon"));
+        Reporting r = new Reporting();
+        r.addManufacturer(manufacturer);
+        r.addManufacturer(manufacturer2);
+        System.out.println(r.largestTypeRevenue("saloon"));
+        System.out.println(r.abovePrice(25000));
+        System.out.println(r.getManufacturerByName("Test1"));
+        System.out.println(r.getManufacturers());
+        System.out.println(r.mostExpensiveSold());
     }
 }

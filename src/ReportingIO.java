@@ -144,14 +144,15 @@ public class ReportingIO {
         System.out.println("What would you like a report on?");
         System.out.println("1.Manufacturer with largest revenue for cars sold of a given type\n2.Most expensive car model sold\n3.All car models made with a price greater than a specified amount");
         int choice = sc.nextInt();
+        sc.nextLine();
         switch (choice){
             case 1:
                 System.out.println("Enter type");
                 String type = sc.nextLine();
-                sc.nextLine();
+                type = type.toLowerCase();
                 System.out.println(reporting.largestTypeRevenue(type));
                 System.out.println("Press any key to continue.");
-                sc.nextLine();
+                //sc.nextLine();
                 welcomeScreen();
                 break;
             case 2:
@@ -165,7 +166,6 @@ public class ReportingIO {
                 int thresholdPrice = sc.nextInt();
                 System.out.println(reporting.abovePrice(thresholdPrice));
                 System.out.println("Press any key to continue.");
-                sc.nextLine();
                 welcomeScreen();
         }
     }
@@ -180,22 +180,29 @@ public class ReportingIO {
         System.out.println("Welcome to the Car Reporting System, what would you like to view?");
         System.out.println("1.Enter Manufacturer data\n2.Enter Model data\n3.List all Manufacturers\n4.List all models made by a manufacturer and their details\n5.Provide reporting statistics on: manufacturer with the largest revenue for cars sold of a given type,\nmost expensive car model sold (including all its details), and all car models made with a price\ngreater than a given amount of money (including all their details)\n6.Exit");
         String choice = sc.nextLine();
-        if(!r.isNumeric(choice)){
+        if(!r.isNumeric(choice) || Integer.parseInt(choice) > 6){
             System.out.println("Please enter a valid number");
             welcomeScreen();
         }else{
-            if(choice.equals("1")){
-                r.inputManufacturerData();
-            }else if(choice.equals("2")){
-                r.inputCarData();
-            }else if(choice.equals("3")){
-                r.listManufacturers();
-            }
-            else if(choice.equals("4")){
-                r.listModelsFromManufacturer();
-            }
-            else if(choice.equals("5")){
-                r.reportingStatistics();
+            switch (choice) {
+                case "1":
+                    r.inputManufacturerData();
+                    break;
+                case "2":
+                    r.inputCarData();
+                    break;
+                case "3":
+                    r.listManufacturers();
+                    break;
+                case "4":
+                    r.listModelsFromManufacturer();
+                    break;
+                case "5":
+                    r.reportingStatistics();
+                    break;
+                case "6":
+                    System.exit(0);
+                    break;
             }
         }
 

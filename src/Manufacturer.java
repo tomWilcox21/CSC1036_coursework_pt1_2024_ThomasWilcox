@@ -49,25 +49,6 @@ public class Manufacturer {
     }
 
     /**
-     * will search through the list of car manufacturers and return the most expensive
-     * @return returns the most expensive model or null if none are found
-     */
-
-    public CarModel mostExpensive(){
-        if(lst.isEmpty()){
-            return null;
-        }
-
-        CarModel carModel = lst.get(0);
-        for(CarModel carModel1 : lst){
-            if(carModel1.getSalePrice() > carModel.getSalePrice()){
-                carModel = carModel1;
-            }
-        }
-        return carModel;
-    }
-
-    /**
      * Will calculate the total revenue of a given type of car that the manufacturer produces and the return it
      * @param type the type of car that has been inputted by the user
      * @return returns the total revenue or null if no car models are found
@@ -81,7 +62,7 @@ public class Manufacturer {
 
         for(CarModel carModel : lst){
             if(carModel.getType().equalsIgnoreCase(type)){
-                totalRevenue += carModel.getSalePrice()*carModel.getNumSold();
+                totalRevenue += (carModel.getSalePrice()*carModel.getNumSold());
             }
         }
         return totalRevenue;
@@ -114,5 +95,19 @@ public class Manufacturer {
     @Override
     public String toString() {
         return "Manufacturer: " + manufacturerName;
+    }
+
+    /**
+     * Main method added for testing
+     * @param args
+     */
+
+    public static void main(String[] args) {
+        Manufacturer manufacturer = new Manufacturer("Test1");
+        manufacturer.addCarModel(new CarModel("Test1", 500, 25000, 50000, "saloon"));
+        manufacturer.addCarModel(new CarModel("Test2", 1000, 40000, 10000, "saloon"));
+        System.out.println(manufacturer.totalRevenue("saloon"));
+        System.out.println(manufacturer.carAbovePrice(25000));
+        System.out.println(manufacturer.getModels());
     }
 }
