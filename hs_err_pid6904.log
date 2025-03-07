@@ -18,7 +18,7 @@
 #     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
 # This output file may be truncated or incomplete.
 #
-#  Out of Memory Error (os_windows.cpp:3828), pid=6188, tid=10988
+#  Out of Memory Error (os_windows.cpp:3828), pid=6904, tid=6752
 #
 # JRE version:  (21.0.5+8) (build )
 # Java VM: OpenJDK 64-Bit Server VM (21.0.5+8-b631.30, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
@@ -30,13 +30,13 @@
 Command Line: git4idea.http.GitAskPassApp Username for 'https://github.com': 
 
 Host: AMD Ryzen 5 5500U with Radeon Graphics         , 12 cores, 5G,  Windows 11 , 64 bit Build 22621 (10.0.22621.4830)
-Time: Fri Mar  7 12:05:37 2025 GMT Standard Time elapsed time: 0.037728 seconds (0d 0h 0m 0s)
+Time: Fri Mar  7 12:14:25 2025 GMT Standard Time elapsed time: 0.027551 seconds (0d 0h 0m 0s)
 
 ---------------  T H R E A D  ---------------
 
-Current thread (0x0000020ea7f24960):  JavaThread "Unknown thread" [_thread_in_vm, id=10988, stack(0x0000004a6b300000,0x0000004a6b400000) (1024K)]
+Current thread (0x0000026707b44af0):  JavaThread "Unknown thread" [_thread_in_vm, id=6752, stack(0x000000fa87d00000,0x000000fa87e00000) (1024K)]
 
-Stack: [0x0000004a6b300000,0x0000004a6b400000]
+Stack: [0x000000fa87d00000,0x000000fa87e00000]
 Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
 V  [jvm.dll+0x6e52b9]
 V  [jvm.dll+0x8c3633]
@@ -72,15 +72,15 @@ Java Threads: ( => current thread )
 Total: 0
 
 Other Threads:
-  0x0000020ea81d0e00 WorkerThread "GC Thread#0"                     [id=5948, stack(0x0000004a6b400000,0x0000004a6b500000) (1024K)]
-  0x0000020ea81dd9a0 ConcurrentGCThread "G1 Main Marker"            [id=30736, stack(0x0000004a6b500000,0x0000004a6b600000) (1024K)]
-  0x0000020ea81df660 WorkerThread "G1 Conc#0"                       [id=20008, stack(0x0000004a6b600000,0x0000004a6b700000) (1024K)]
+  0x0000026709dd3040 WorkerThread "GC Thread#0"                     [id=2756, stack(0x000000fa87e00000,0x000000fa87f00000) (1024K)]
+  0x0000026709ddfaf0 ConcurrentGCThread "G1 Main Marker"            [id=4400, stack(0x000000fa87f00000,0x000000fa88000000) (1024K)]
+  0x0000026709de06b0 WorkerThread "G1 Conc#0"                       [id=21864, stack(0x000000fa88000000,0x000000fa88100000) (1024K)]
 
 [error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff943178ce7]
 VM state: not at safepoint (not fully initialized)
 
 VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
-[0x00007ff943afeb30] Heap_lock - owner thread: 0x0000020ea7f24960
+[0x00007ff943afeb30] Heap_lock - owner thread: 0x0000026707b44af0
 
 Heap address: 0x00000000a2200000, size: 1502 MB, Compressed Oops mode: 32-bit
 
@@ -99,16 +99,16 @@ Heap:
 
 Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, TAMS=top-at-mark-start, PB=parsable bottom
 
-Card table byte_map: [0x0000020ebd8b0000,0x0000020ebdba0000] _byte_map_base: 0x0000020ebd39f000
+Card table byte_map: [0x000002671d570000,0x000002671d860000] _byte_map_base: 0x000002671d05f000
 
-Marking Bits: (CMBitMap*) 0x0000020ea81d1500
- Bits: [0x0000020ebdba0000, 0x0000020ebf318000)
+Marking Bits: (CMBitMap*) 0x0000026709dd3650
+ Bits: [0x000002671d860000, 0x000002671efd8000)
 
 GC Heap History (0 events):
 No events
 
 Dll operation events (1 events):
-Event: 0.025 Loaded shared library C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\java.dll
+Event: 0.017 Loaded shared library C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\java.dll
 
 Deoptimization events (0 events):
 No events
@@ -142,7 +142,7 @@ No events
 
 
 Dynamic libraries:
-0x00007ff6ae600000 - 0x00007ff6ae60a000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\java.exe
+0x00007ff714560000 - 0x00007ff71456a000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\java.exe
 0x00007ffa0b330000 - 0x00007ffa0b547000 	C:\WINDOWS\SYSTEM32\ntdll.dll
 0x00007ffa09960000 - 0x00007ffa09a24000 	C:\WINDOWS\System32\KERNEL32.DLL
 0x00007ffa08ab0000 - 0x00007ffa08e80000 	C:\WINDOWS\System32\KERNELBASE.dll
@@ -150,24 +150,24 @@ Dynamic libraries:
 0x00007ff9e7d40000 - 0x00007ff9e7d58000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\jli.dll
 0x00007ff9f7f20000 - 0x00007ff9f7f3b000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\VCRUNTIME140.dll
 0x00007ffa0abc0000 - 0x00007ffa0ad6e000 	C:\WINDOWS\System32\USER32.dll
-0x00007ff9ecf60000 - 0x00007ff9ed1f2000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.4830_none_270fe7d773858e80\COMCTL32.dll
 0x00007ffa08910000 - 0x00007ffa08936000 	C:\WINDOWS\System32\win32u.dll
-0x00007ffa09370000 - 0x00007ffa09417000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff9ecf60000 - 0x00007ff9ed1f2000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.4830_none_270fe7d773858e80\COMCTL32.dll
 0x00007ffa09cd0000 - 0x00007ffa09cf9000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffa09370000 - 0x00007ffa09417000 	C:\WINDOWS\System32\msvcrt.dll
 0x00007ffa08e80000 - 0x00007ffa08f9b000 	C:\WINDOWS\System32\gdi32full.dll
 0x00007ffa085e0000 - 0x00007ffa0867a000 	C:\WINDOWS\System32\msvcp_win.dll
 0x00007ffa0b2b0000 - 0x00007ffa0b2e1000 	C:\WINDOWS\System32\IMM32.DLL
 0x00007ff9f8400000 - 0x00007ff9f840c000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\vcruntime140_1.dll
-0x00007ff9c9d80000 - 0x00007ff9c9e0d000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\msvcp140.dll
+0x00007ff9bf0d0000 - 0x00007ff9bf15d000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\msvcp140.dll
 0x00007ff942e30000 - 0x00007ff943bf1000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\server\jvm.dll
 0x00007ffa098a0000 - 0x00007ffa09951000 	C:\WINDOWS\System32\ADVAPI32.dll
 0x00007ffa0a9e0000 - 0x00007ffa0aa87000 	C:\WINDOWS\System32\sechost.dll
 0x00007ffa08820000 - 0x00007ffa08848000 	C:\WINDOWS\System32\bcrypt.dll
 0x00007ffa0aaa0000 - 0x00007ffa0abb4000 	C:\WINDOWS\System32\RPCRT4.dll
 0x00007ffa09a80000 - 0x00007ffa09af1000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffa084b0000 - 0x00007ffa084fd000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
 0x00007ff9ff670000 - 0x00007ff9ff67a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
 0x00007ffa02e10000 - 0x00007ffa02e44000 	C:\WINDOWS\SYSTEM32\WINMM.dll
-0x00007ffa084b0000 - 0x00007ffa084fd000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
 0x00007ffa08490000 - 0x00007ffa084a3000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
 0x00007ffa07620000 - 0x00007ffa07638000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
 0x00007ff9f82f0000 - 0x00007ff9f82fa000 	C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2.2\jbr\bin\jimage.dll
@@ -235,7 +235,7 @@ JNI global refs: 0, weak refs: 0
 JNI global refs memory usage: 0, weak refs: 0
 
 Process memory usage:
-Resident Set Size: 11656K (0% of 6149892K total physical memory with 246060K free physical memory)
+Resident Set Size: 11688K (0% of 6149892K total physical memory with 484592K free physical memory)
 
 OOME stack traces (most recent first):
 Classloader memory used:
@@ -244,7 +244,7 @@ Classloader memory used:
 
 OS:
  Windows 11 , 64 bit Build 22621 (10.0.22621.4830)
-OS uptime: 15 days 20:41 hours
+OS uptime: 15 days 20:50 hours
 
 CPU: total 12 (initial active 12) (12 cores per cpu, 2 threads per core) family 23 model 104 stepping 1 microcode 0x0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, rdtscp, rdpid, f16c
 Processor Information for processor 0
@@ -254,26 +254,26 @@ Processor Information for processor 1
 Processor Information for processor 2
   Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
 Processor Information for processor 3
-  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
-Processor Information for processor 4
   Max Mhz: 2100, Current Mhz: 1813, Mhz Limit: 2100
+Processor Information for processor 4
+  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
 Processor Information for processor 5
   Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
 Processor Information for processor 6
-  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
+  Max Mhz: 2100, Current Mhz: 1813, Mhz Limit: 2100
 Processor Information for processor 7
-  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
+  Max Mhz: 2100, Current Mhz: 1813, Mhz Limit: 2100
 Processor Information for processor 8
-  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
+  Max Mhz: 2100, Current Mhz: 1813, Mhz Limit: 2100
 Processor Information for processor 9
-  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
+  Max Mhz: 2100, Current Mhz: 1813, Mhz Limit: 2100
 Processor Information for processor 10
-  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
+  Max Mhz: 2100, Current Mhz: 1813, Mhz Limit: 2100
 Processor Information for processor 11
-  Max Mhz: 2100, Current Mhz: 1893, Mhz Limit: 2100
+  Max Mhz: 2100, Current Mhz: 1813, Mhz Limit: 2100
 
-Memory: 4k page, system-wide physical 6005M (240M free)
-TotalPageFile size 24437M (AvailPageFile size 79M)
+Memory: 4k page, system-wide physical 6005M (473M free)
+TotalPageFile size 24437M (AvailPageFile size 40M)
 current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
 current process commit charge ("private bytes"): 64M, peak: 158M
 
